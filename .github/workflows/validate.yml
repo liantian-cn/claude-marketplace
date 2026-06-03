@@ -1,0 +1,57 @@
+name: Validate Plugins
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate marketplace.json structure
+        run: |
+          echo "Checking marketplace.json exists..."
+          test -f .claude-plugin/marketplace.json
+          echo "Checking valid JSON..."
+          python3 -c "import json; json.load(open('.claude-plugin/marketplace.json'))"
+          echo "Checking required fields..."
+          python3 -c "
+          import json
+          data = json.load(open('.claude-plugin/marketplace.json'))
+          assert 'name' in data, 'Missing: name'
+          assert 'owner' in data, 'Missing: owner'
+          assert 'plugins' in data, 'Missing: plugins'
+          assert isinstance(data['plugins'], list), 'plugins must be an array'
+          print(f'OK: {len(data[\"plugins\"])} plugin(s) defined')
+          "
+
+      - name: Validate each plugin
+        run: |
+          echo "Validating bundled plugins..."
+          for plugin_dir in plugins/*/; do
+            if [ -d "$plugin_dir" ]; then
+              plugin_name=$(basename "$plugin_dir")
+              echo "--- Validating: $plugin_name ---"
+              if [ -f "$plugin_dir/.claude-plugin/plugin.json" ]; then
+                python3 -c "
+                import json
+                data = json.load(open('$plugin_dir/.claude-plugin/plugin.json'))
+                assert 'name' in data, 'plugin.json missing name'
+                print(f'  plugin.json OK: {data[\"name\"]}')
+                "
+              fi
+              if [ -d "$plugin_dir/skills" ]; then
+                skill_count=$(find "$plugin_dir/skills" -name 'SKILL.md' | wc -l)
+                echo "  Skills found: $skill_count"
+              fi
+              if [ -f "$plugin_dir/.mcp.json" ]; then
+                echo "  MCP config: present"
+              fi
+              echo "  PASSED: $plugin_name"
+            fi
+          done
