@@ -50,9 +50,9 @@
 
 | 插件                                              | 版本  | 描述                                                                                |
 | ------------------------------------------------- | ----- | ----------------------------------------------------------------------------------- |
-| [liantian-env](./plugins/liantian-env/)           | 0.1.0 | 🌟 环境配置工具包 — Python/Pandoc/markitdown 工具链安装、API Key 配置、插件安装引导 |
-| [qcc-due-diligence](./plugins/qcc-due-diligence/) | 0.1.0 | 企查查企业尽职调查 — 13 项风控技能（KYB、UBO、授信、贷后、破产、诉讼等）            |
-| [advanced-search](./plugins/advanced-search/)               | 1.0.0 | 高级网络搜索与深度研究 — 基于 Tavily API 的双引擎编排（WebSearch + Tavily），含内容提取、网页抓取与研究 |
+| [liantian-env](./plugins/liantian-env/)           | 1.0.1 | liantian cc market 环境配置工具包，帮助用户完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及插件安装 |
+| [qcc-due-diligence](./plugins/qcc-due-diligence/) | 1.0.1 | 面向金融机构的企业尽职调查工具包，通过企查查（QCC）商业数据库提供 KYB 核验、UBO 穿透、授信尽调、贷后监控、破产预警、诉讼分析、贸易融资合规等 12 项核心业务能力 |
+| [advanced-search](./plugins/advanced-search/)               | 1.0.1 | 五合一搜索引擎编排器 — WebSearch + Tavily + Bailian + Bocha + Baidu 五大搜索引擎并行调用，自动去重合并，覆盖全球中英文内容 |
 
 ## 仓库结构
 
