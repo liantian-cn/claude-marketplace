@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "liantian-cn 的 Claude Code 插件市场",
-    "version": "0.1.1"
+    "version": "1.0.1"
   },
   "plugins": [
     {
       "name": "qcc-due-diligence",
       "source": "./plugins/qcc-due-diligence",
       "description": "面向金融机构的企业尽职调查工具包，通过企查查（QCC）商业数据库提供 KYB 核验、UBO 穿透、授信尽调、贷后监控、破产预警、诉讼分析、贸易融资合规等 13 项核心业务能力。",
-      "version": "0.1.1",
+      "version": "1.0.1",
       "author": {
         "name": "liantian"
       },
@@ -40,7 +40,7 @@
       "name": "liantian-env",
       "source": "./plugins/liantian-env",
       "description": "liantian cc market 环境配置工具包，帮助用户完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及插件安装。",
-      "version": "0.1.1",
+      "version": "1.0.1",
       "author": {
         "name": "liantian"
       },
