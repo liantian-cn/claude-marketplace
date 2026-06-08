@@ -13,9 +13,16 @@
     },
     "bocha-mcp": {
       "type": "http",
-      "url": "https://mcp.bochaai.com/sse",
+      "url": "https://mcp.bochaai.com/mcp",
       "headers": {
         "Authorization": "Bearer ${BOCHA_API_KEY}"
+      }
+    },
+    "baidu_web_search": {
+      "type": "http",
+      "url": "https://qianfan.baidubce.com/v2/tools/web-search/mcp",
+      "headers": {
+        "Authorization": "Bearer ${BAIDU_API_KEY}"
       }
     }
   }
