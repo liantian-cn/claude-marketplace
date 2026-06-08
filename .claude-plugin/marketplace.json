@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "liantian-cn 的 Claude Code 插件市场",
-    "version": "1.0.1"
+    "version": "1.0.2"
   },
   "plugins": [
     {
@@ -40,7 +40,7 @@
       "name": "liantian-env",
       "source": "./plugins/liantian-env",
       "description": "liantian cc market 环境配置工具包，帮助用户完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及插件安装。",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "author": {
         "name": "liantian"
       },
