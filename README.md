@@ -1,4 +1,4 @@
-# claude-marketplace
+# liantian-cc-market
 
 **liantian-cn 的 Claude Code 插件市场** — 面向企业尽职调查与合规风控场景。
 
@@ -7,7 +7,7 @@
 ## 添加此市场
 
 ```bash
-/plugin marketplace add https://gitee.com/liantian-cn/claude-marketplace.git
+/plugin marketplace add https://gitee.com/liantian-cn/cc-marketplace.git
 ```
 
 ## 安装插件
