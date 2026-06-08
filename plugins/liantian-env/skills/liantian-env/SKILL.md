@@ -187,9 +187,10 @@ python "${CLAUDE_PLUGIN_ROOT}/skills/liantian-env/scripts/set_env.py" set BOCHA_
 
 > **说明**：`advanced-search` 插件使用百度搜索 MCP 服务（千帆平台），提供中文互联网搜索能力，该服务通过 `BAIDU_API_KEY` 认证。
 
-1. 访问 [https://console.bce.baidu.com/iam/#/iam/apikey/list](https://console.bce.baidu.com/iam/#/iam/apikey/list)
-2. 登录/注册百度智能云账号
-3. 在 API Key 管理页面创建或获取 API Key
+1. 访问 [https://console.bce.baidu.com/qianfan/tools/toolsCenter](https://console.bce.baidu.com/qianfan/tools/toolsCenter)，开通百度搜索服务
+2. 访问 [https://console.bce.baidu.com/ai-search/qianfan/ais/console/apiKey](https://console.bce.baidu.com/ai-search/qianfan/ais/console/apiKey)
+3. 登录/注册百度智能云账号
+4. 在 API Key 管理页面创建或获取 API Key
 
 **配置方式**：
 
