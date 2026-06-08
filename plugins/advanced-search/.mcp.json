@@ -3,6 +3,20 @@
     "tavily-mcp": {
       "type": "http",
       "url": "https://mcp.tavily.com/mcp/?tavilyApiKey=${TAVILY_API_KEY}"
+    },
+    "bailian_web_search": {
+      "type": "http",
+      "url": "https://dashscope.aliyuncs.com/api/v1/mcps/WebSearch/mcp",
+      "headers": {
+        "Authorization": "Bearer ${DASHSCOPE_API_KEY}"
+      }
+    },
+    "bocha-mcp": {
+      "type": "http",
+      "url": "https://mcp.bochaai.com/sse",
+      "headers": {
+        "Authorization": "Bearer ${BOCHA_API_KEY}"
+      }
     }
   }
 }
