@@ -14,6 +14,7 @@ Existing settings outside the "env" field are preserved.
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 

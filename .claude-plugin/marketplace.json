@@ -37,8 +37,8 @@
       "category": "金融风控"
     },
     {
-      "name": "liantian-cc-env-setup",
-      "source": "./plugins/liantian-cc-env-setup",
+      "name": "liantian-env",
+      "source": "./plugins/liantian-env",
       "description": "liantian cc market 环境配置工具包，帮助用户完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及插件安装。",
       "version": "0.1.0",
       "author": {
@@ -55,7 +55,7 @@
         "初始化"
       ],
       "homepage": "https://github.com/liantian-cn/claude-marketplace",
-      "repository": "https://github.com/liantian-cn/claude-marketplace/tree/main/plugins/liantian-cc-env-setup",
+      "repository": "https://github.com/liantian-cn/claude-marketplace/tree/main/plugins/liantian-env",
       "category": "工具"
     }
   ]

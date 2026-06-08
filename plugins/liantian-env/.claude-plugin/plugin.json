@@ -1,5 +1,5 @@
 {
-  "name": "liantian-cc-env-setup",
+  "name": "liantian-env",
   "version": "0.1.0",
   "description": "liantian cc market 环境配置工具包，帮助用户完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及插件安装。",
   "author": {
