@@ -7,15 +7,14 @@
 ## 添加此市场
 
 ```bash
-/plugin marketplace add https://gitee.com/liantian-cn/claude-marketplace
+/plugin marketplace add https://gitee.com/liantian-cn/claude-marketplace.git
 ```
 
 ## 安装插件
 
 ```bash
 
-# 安装所有可用插件
-/plugin install --from-marketplace liantian-cc-market
+/plugin install qcc-due-diligence@liantian-cc-market
 ```
 
 ## 已收录插件
