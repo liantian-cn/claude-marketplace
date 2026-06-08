@@ -1,0 +1,18 @@
+{
+  "name": "liantian-cc-market-setup",
+  "version": "0.1.0",
+  "description": "liantian cc market 环境配置工具包，帮助用户完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及插件安装。",
+  "author": {
+    "name": "liantian"
+  },
+  "license": "MIT",
+  "keywords": [
+    "环境配置",
+    "工具安装",
+    "Python",
+    "Pandoc",
+    "markitdown",
+    "API Key",
+    "初始化"
+  ]
+}
