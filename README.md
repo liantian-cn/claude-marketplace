@@ -4,24 +4,39 @@
 
 [![Validate Plugins](https://github.com/liantian-cn/claude-marketplace/actions/workflows/validate.yml/badge.svg)](https://github.com/liantian-cn/claude-marketplace/actions/workflows/validate.yml)
 
-## 添加此市场
+## 快速开始
+
+### 第一步：添加市场
 
 ```bash
 /plugin marketplace add https://gitee.com/liantian-cn/cc-marketplace.git
 ```
 
-## 安装插件
+### 第二步：安装环境配置工具
 
 ```bash
-
-/plugin install qcc-due-diligence@liantian-cc-market
+/plugin install liantian-cc-env-setup@liantian-cc-market
 ```
+
+### 第三步：使用环境配置技能完成初始化
+
+```
+/liantian-cc-env-setup
+```
+
+该技能将引导你完成：
+- Python 3.12+、Pandoc 2.0+、markitdown 工具链安装
+- 企查查（QCC）、DeepSeek 等第三方平台 API Key 配置
+- 其他插件（如 `qcc-due-diligence`）的安装
+
+> **提示**：后续如需单独安装某个业务插件，可使用 `/plugin install <插件名>@liantian-cc-market`。
 
 ## 已收录插件
 
-| 插件                                              | 版本  | 描述                                                                     |
-| ------------------------------------------------- | ----- | ------------------------------------------------------------------------ |
-| [qcc-due-diligence](./plugins/qcc-due-diligence/) | 0.1.0 | 企查查企业尽职调查 — 13 项风控技能（KYB、UBO、授信、贷后、破产、诉讼等） |
+| 插件                                                                       | 版本  | 描述                                                                                           |
+| -------------------------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------------------- |
+| [liantian-cc-env-setup](./plugins/liantian-cc-env-setup/)                  | 0.1.0 | 🌟 环境配置工具包 — Python/Pandoc/markitdown 工具链安装、API Key 配置、插件安装引导               |
+| [qcc-due-diligence](./plugins/qcc-due-diligence/)                          | 0.1.0 | 企查查企业尽职调查 — 13 项风控技能（KYB、UBO、授信、贷后、破产、诉讼等）                         |
 
 ## 仓库结构
 
@@ -32,6 +47,7 @@ claude-marketplace/
 ├── .github/workflows/
 │   └── validate.yml              # CI 自动校验 marketplace 与插件结构
 ├── plugins/                      # 插件存放目录
+│   ├── liantian-cc-env-setup/    # 环境配置工具包
 │   └── qcc-due-diligence/        # 企查查企业尽职调查插件
 ├── .gitignore                    # 忽略本地配置与缓存
 └── README.md                     # 本文件
