@@ -1,10 +1,10 @@
 {
-  "name": "liantian-claude-marketplace",
+  "name": "liantian-cc-market",
   "owner": {
     "name": "liantian-cn"
   },
   "metadata": {
-    "description": "liantian-cn 的 Claude Code 插件市场 — 面向企业尽职调查与合规风控场景",
+    "description": "liantian-cn 的 Claude Code 插件市场",
     "version": "0.1.0"
   },
   "plugins": [

@@ -7,23 +7,21 @@
 ## 添加此市场
 
 ```bash
-/plugin marketplace add https://github.com/liantian-cn/claude-marketplace
+/plugin marketplace add https://gitee.com/liantian-cn/claude-marketplace
 ```
 
 ## 安装插件
 
 ```bash
-# 安装 qcc-due-diligence（从本市场）
-/plugin install qcc-due-diligence@liantian-claude-marketplace
 
 # 安装所有可用插件
-/plugin install --from-marketplace liantian-claude-marketplace
+/plugin install --from-marketplace liantian-cc-market
 ```
 
 ## 已收录插件
 
-| 插件 | 版本 | 描述 |
-|------|------|------|
+| 插件                                              | 版本  | 描述                                                                     |
+| ------------------------------------------------- | ----- | ------------------------------------------------------------------------ |
 | [qcc-due-diligence](./plugins/qcc-due-diligence/) | 0.1.0 | 企查查企业尽职调查 — 13 项风控技能（KYB、UBO、授信、贷后、破产、诉讼等） |
 
 ## 仓库结构
