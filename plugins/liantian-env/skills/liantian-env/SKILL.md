@@ -151,9 +151,9 @@ python "${CLAUDE_PLUGIN_ROOT}/skills/liantian-env/scripts/set_env.py" set DASHSC
 
 ### 3.4 Tavily Search API（必须配置）
 
-**适用插件**：`tavily`
+**适用插件**：`advanced-search`
 
-> ⚠️ **重要**：`tavily` 插件**依赖** `TAVILY_API_KEY` 才能正常工作。使用 `tavily` 插件的网络搜索、内容提取、网页抓取、深度研究等功能前，**必须**先完成此 API Key 的配置。
+> ⚠️ **重要**：`advanced-search` 插件**依赖** `TAVILY_API_KEY` 才能正常工作。使用插件的网络搜索、内容提取、网页抓取、深度研究等功能前，**必须**先完成此 API Key 的配置。
 
 1. 访问 [https://app.tavily.com/home](https://app.tavily.com/home)
 2. 登录/注册 Tavily 账号

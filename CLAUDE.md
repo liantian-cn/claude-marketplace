@@ -106,7 +106,7 @@ All qcc-due-diligence skills use a consistent caching convention:
 |--------|--------|---------|
 | `liantian-env` | 1 | Toolchain install (Python/Pandoc/markitdown) + API key config |
 | `qcc-due-diligence` | 12 | Enterprise due diligence via QCC database (KYB, UBO, credit, litigation, etc.) |
-| `tavily` | 5 | Web search, extract, crawl, and deep research via Tavily API |
+| `advanced-search` | 1 | Dual-engine web search orchestration (WebSearch + Tavily) with deep research |
 
 ## Repository Operations
 

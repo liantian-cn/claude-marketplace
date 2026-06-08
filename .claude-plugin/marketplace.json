@@ -59,9 +59,9 @@
       "category": "工具"
     },
     {
-      "name": "tavily",
-      "source": "./plugins/tavily",
-      "description": "基于 Tavily API 的网络搜索、内容提取、网页抓取与深度研究工具包，为 AI 应用提供实时网络数据获取与信息检索能力。",
+      "name": "advanced-search",
+      "source": "./plugins/advanced-search",
+      "description": "高级网络搜索与深度研究工具包，基于 Tavily API 结合内置 WebSearch 双引擎编排，支持搜索、内容提取、网页抓取、URL 发现与深度研究。",
       "version": "1.0.0",
       "author": {
         "name": "liantian"
@@ -79,7 +79,7 @@
         "extract"
       ],
       "homepage": "https://github.com/liantian-cn/cc-marketplace/",
-      "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/tavily",
+      "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/advanced-search",
       "category": "工具"
     }
   ]

@@ -1,0 +1,25 @@
+{
+  "name": "advanced-search-plugins",
+  "owner": {
+    "name": "liantian"
+  },
+  "metadata": {
+    "description": "Advanced web search orchestration — WebSearch + Tavily dual-engine search with automatic tool routing",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "advanced-search",
+      "source": "./",
+      "description": "Advanced web search orchestration — combines WebSearch and Tavily API for comprehensive information retrieval.",
+      "version": "1.0.0",
+      "author": {
+        "name": "liantian"
+      },
+      "license": "MIT",
+      "keywords": ["search", "web-search", "rag", "agents", "llm", "research", "crawl", "extract"],
+      "category": "external-integrations",
+      "tags": ["web-search", "data-retrieval", "agents", "rag", "research"]
+    }
+  ]
+}

@@ -38,11 +38,11 @@
 # 安装企查查尽职调查工具包
 /plugin install qcc-due-diligence@liantian-cc-market
 
-# 安装 Tavily 网络搜索与深度研究工具包
-/plugin install tavily@liantian-cc-market
+# 安装高级网络搜索与深度研究工具包
+/plugin install advanced-search@liantian-cc-market
 ```
 
-> **提示**：`tavily` 插件依赖 `TAVILY_API_KEY`，使用前请确保已通过 `/liantian-env` 完成 Tavily API Key 配置（可访问 [https://app.tavily.com/home](https://app.tavily.com/home) 获取）。
+> **提示**：`advanced-search` 插件依赖 `TAVILY_API_KEY`，使用前请确保已通过 `/liantian-env` 完成 Tavily API Key 配置（可访问 [https://app.tavily.com/home](https://app.tavily.com/home) 获取）。
 
 > 后续如需单独安装某个业务插件，可使用 `/plugin install <插件名>@liantian-cc-market`。
 
@@ -52,7 +52,7 @@
 | ------------------------------------------------- | ----- | ----------------------------------------------------------------------------------- |
 | [liantian-env](./plugins/liantian-env/)           | 0.1.0 | 🌟 环境配置工具包 — Python/Pandoc/markitdown 工具链安装、API Key 配置、插件安装引导 |
 | [qcc-due-diligence](./plugins/qcc-due-diligence/) | 0.1.0 | 企查查企业尽职调查 — 13 项风控技能（KYB、UBO、授信、贷后、破产、诉讼等）            |
-| [tavily](./plugins/tavily/)                       | 1.0.0 | 网络搜索与深度研究 — 基于 Tavily API 的网页搜索、内容提取、网页抓取与研究技能        |
+| [advanced-search](./plugins/advanced-search/)               | 1.0.0 | 高级网络搜索与深度研究 — 基于 Tavily API 的双引擎编排（WebSearch + Tavily），含内容提取、网页抓取与研究 |
 
 ## 仓库结构
 
@@ -65,7 +65,7 @@ claude-marketplace/
 ├── plugins/                      # 插件存放目录
 │   ├── liantian-env/             # 环境配置工具包
 │   ├── qcc-due-diligence/        # 企查查企业尽职调查插件
-│   └── tavily/                   # Tavily 网络搜索与深度研究插件
+│   └── advanced-search/           # 高级网络搜索与深度研究插件
 ├── .gitignore                    # 忽略本地配置与缓存
 └── README.md                     # 本文件
 ```
