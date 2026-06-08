@@ -41,7 +41,10 @@ def save_settings(settings):
     """Save settings dict to settings.json, creating parent dirs if needed."""
     path = settings_path()
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
+    # Use os.open with mode=0o600 so the credentials file is not world-readable.
+    # Atomic: permissions are set at creation time, not fixed after the fact.
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
         json.dump(settings, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
