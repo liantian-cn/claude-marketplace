@@ -149,12 +149,15 @@ python "${CLAUDE_PLUGIN_ROOT}/skills/liantian-env/scripts/set_env.py" set \
 python "${CLAUDE_PLUGIN_ROOT}/skills/liantian-env/scripts/set_env.py" set DASHSCOPE_API_KEY "sk-your-dashscope-key"
 ```
 
-### 3.4 Tavily Search API
+### 3.4 Tavily Search API（必须配置）
 
-**适用场景**：插件中涉及网络搜索的功能。
+**适用插件**：`tavily`
 
-1. 访问 [https://tavily.com/](https://tavily.com/)
-2. 注册账号并获取 API Key
+> ⚠️ **重要**：`tavily` 插件**依赖** `TAVILY_API_KEY` 才能正常工作。使用 `tavily` 插件的网络搜索、内容提取、网页抓取、深度研究等功能前，**必须**先完成此 API Key 的配置。
+
+1. 访问 [https://app.tavily.com/home](https://app.tavily.com/home)
+2. 登录/注册 Tavily 账号
+3. 在控制台创建或复制 API Key（格式为 `tvly-` 开头）
 
 **配置方式**：
 
