@@ -1,6 +1,6 @@
 ---
 name: liantian-env
-description: "liantian cc market 环境配置技能。通过 /liantian-env 手动调用。完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及业务插件的安装引导。当用户需要初始化 liantian cc market 环境、配置企查查/DeepSeek API Key、安装 qcc-due-diligence 等插件时使用此技能。"
+description: "liantian cc market 环境配置技能。通过 /liantian-env 手动调用。完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置（企查查/DeepSeek/阿里云/Tavily/博查）、以及业务插件的安装引导。当用户需要初始化 liantian cc market 环境、配置第三方 API Key、安装 qcc-due-diligence 等插件时使用此技能。"
 version: "2026-06-08"
 category: "环境配置"
 mcp_servers: []
@@ -163,6 +163,22 @@ python "${CLAUDE_PLUGIN_ROOT}/skills/liantian-env/scripts/set_env.py" set DASHSC
 
 ```bash
 python "${CLAUDE_PLUGIN_ROOT}/skills/liantian-env/scripts/set_env.py" set TAVILY_API_KEY "tvly-your-tavily-key"
+```
+
+### 3.5 博查（Bocha）搜索 API
+
+**适用插件**：`advanced-search`
+
+> **说明**：`advanced-search` 插件使用博查 MCP 服务提供中文搜索能力，该服务通过 `BOCHA_API_KEY` 认证。
+
+1. 访问 [https://open.bochaai.com/overview](https://open.bochaai.com/overview)
+2. 登录/注册博查开放平台账号
+3. 在控制台创建或获取 API Key
+
+**配置方式**：
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/skills/liantian-env/scripts/set_env.py" set BOCHA_API_KEY "your-bocha-api-key"
 ```
 
 ---
