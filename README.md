@@ -6,34 +6,9 @@
 
 ## 快速开始
 
-### 第一步：添加市场
-
-```bash
-claude plugin marketplace add --scope user https://gitee.com/liantian-cn/cc-marketplace.git
-```
-
-### 第二步：安装必备基础环境插件
-
-```bash
-claude plugin install --scope user essentials@liantian-cc-market
-```
-
-### 第三步：配置环境
-
-按照 [INSTALLER.md](./INSTALLER.md) 完成工具链安装和 API Key 配置：
-
-- Python 3.12+、Pandoc 2.0+、markitdown 工具链安装
-- 企查查（QCC）、Tavily、博查、百度等第三方平台 API Key 配置
-
-### 第四步（可选）：安装企查查尽职调查工具包
-
-```bash
-claude plugin install --scope user qcc-due-diligence@liantian-cc-market
-```
-
-> **提示**：`essentials` 已内置五引擎并行搜索（WebSearch + Tavily + Bailian + Bocha + Baidu），支持优雅降级——未配置的引擎自动跳过。如需启用全部引擎，请按照 [INSTALLER.md](./INSTALLER.md) 完成相关 API Key 配置。
-
-> 后续如需单独安装某个业务插件，可使用 `claude plugin install --scope user <插件名>@liantian-cc-market`。
+1. 下载 [Trae Solo](https://www.trae.cn/solo)
+2. 对 Trae Solo 说：请按 https://gitee.com/liantian-cn/cc-marketplace/blob/main/INSTALLER.md 帮我安装环境。
+3. 对 Trae Solo 说：帮我安装 qcc-due-diligence
 
 ## 已收录插件
 
@@ -59,13 +34,6 @@ claude-marketplace/
 ├── .gitignore                    # 忽略本地配置与缓存
 └── README.md                     # 本文件
 ```
-
-## 如何贡献新插件
-
-1. Fork 本仓库
-2. 在 `plugins/` 下创建插件目录，包含 `.claude-plugin/plugin.json`
-3. 在 `.claude-plugin/marketplace.json` 的 `plugins` 数组中添加条目
-4. 提交 PR
 
 ## 许可证
 
