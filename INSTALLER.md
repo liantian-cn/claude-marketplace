@@ -2,13 +2,74 @@
 
 本指南用于 [liantian cc market](https://gitee.com/liantian-cn/claude-marketplace) 中所有插件的基础环境配置。首次使用该市场中的插件前，请按本文档完成环境初始化。
 
-**核心目标**：在当前电脑上完成 Python 3.12+、Pandoc 2.0+、markitdown 的安装与验证，注册各第三方平台账号并获取 API Key，将 API Key 配置到 Claude Code 的 `~/.claude/settings.json` 中。
+**核心目标**：在当前电脑上完成 Node.js 22、Claude Code、Python 3.12+、Pandoc 2.0+、markitdown 的安装与验证，注册各第三方平台账号并获取 API Key，将 API Key 配置到 Claude Code 的 `~/.claude/settings.json` 中。
 
 ---
 
-## 一、安装基础工具链
+## 一、基础安装
 
-首次使用前，确认以下工具已安装。
+首次使用前，请完成以下基础环境安装。
+
+### 1.1 安装 NVM（Node Version Manager）
+
+**Windows：**
+
+```bash
+winget install -e --id CoreyButler.NVMforWindows
+```
+
+安装完成后，**关闭并重新打开终端**，然后配置 Node.js 镜像源：
+
+```bash
+[System.Environment]::SetEnvironmentVariable("NVM_NODEJS_ORG_MIRROR", "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/", "User")
+```
+
+> 配置镜像源后需重新打开终端使其生效。
+
+**macOS / Linux：**
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+```
+
+然后重启终端，并配置镜像源：
+
+```bash
+export NVM_NODEJS_ORG_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/
+```
+
+### 1.2 安装 Node.js 22
+
+```bash
+nvm install 22
+nvm use 22
+```
+
+验证安装：
+
+```bash
+node --version   # 应输出 v22.x.x
+npm --version    # 应输出 10.x.x 或更高
+```
+
+### 1.3 安装 Claude Code 和 npm-check-updates
+
+```bash
+npm install -g @anthropic-ai/claude-code@latest npm-check-updates@latest
+```
+
+验证安装：
+
+```bash
+claude --version
+ncu --version
+```
+
+---
+
+## 二、安装基础工具链
+
+安装 Python 3.12+、Pandoc 2.0+、markitdown。
 
 ### Windows（通过 winget）
 
@@ -52,7 +113,7 @@ python -m pip install 'markitdown[all]'
 
 ---
 
-## 二、验证工具链安装
+## 三、验证工具链安装
 
 安装完成后，运行以下命令验证：
 
@@ -64,7 +125,7 @@ markitdown --version
 
 ---
 
-## 三、注册第三方平台并获取 API Key
+## 四、注册第三方平台并获取 API Key
 
 liantian cc market 中的插件依赖以下第三方平台服务，需要提前注册账号并获取 API Key。
 
@@ -176,7 +237,7 @@ python scripts/set_env.py set BAIDU_API_KEY "your-baidu-api-key"
 
 ---
 
-## 四、配置 Claude Code Subagent 模型（可选）
+## 五、配置 Claude Code Subagent 模型（可选）
 
 如果你使用第三方模型提供商的 Anthropic 兼容接口，可按需指定子代理使用的模型：
 
@@ -188,7 +249,7 @@ python scripts/set_env.py set \
 
 ---
 
-## 五、安装其他业务插件
+## 六、安装其他业务插件
 
 完成上述环境配置后，安装你需要的业务插件：
 
@@ -219,7 +280,7 @@ claude plugin list
 
 ---
 
-## 六、验证完整环境
+## 七、验证完整环境
 
 全部配置完成后，运行以下检查：
 
@@ -242,7 +303,7 @@ claude plugin list
 
 ---
 
-## 七、markitdown 使用方法
+## 八、markitdown 使用方法
 
 `markitdown` 可将 PDF、DOCX、PPTX、XLSX、HTML、CSV、JSON、XML、ZIP、图片（OCR）等常见格式转换为 Markdown：
 
@@ -259,7 +320,7 @@ markitdown 页面.html   -o 页面.md     # HTML → Markdown
 
 ---
 
-## 八、pandoc 使用方法
+## 九、pandoc 使用方法
 
 1. **首先生成完整的 Markdown 报告**（默认格式），保存为 `.md` 文件
 2. **使用 pandoc 转换为目标格式**：
@@ -280,7 +341,7 @@ pandoc 报告.md -o 报告.pptx --from markdown --to pptx
 
 ---
 
-## 九、故障排查
+## 十、故障排查
 
 ### 常见问题
 
