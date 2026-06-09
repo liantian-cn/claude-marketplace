@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "liantian-cn 的 Claude Code 插件市场",
-    "version": "1.0.2"
+    "version": "1.0.5"
   },
   "plugins": [
     {
@@ -37,49 +37,29 @@
       "category": "金融风控"
     },
     {
-      "name": "liantian-env",
-      "source": "./plugins/liantian-env",
-      "description": "liantian cc market 环境配置工具包，帮助用户完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及插件安装。",
-      "version": "1.0.2",
+      "name": "essentials",
+      "source": "./plugins/essentials",
+      "description": "liantian cc market 必备基础环境，包含 15 个技能——高效开发方法（构思、规划、TDD、调试、代码审查、验证等）及五合一搜索引擎编排（WebSearch + Tavily + Bailian + Bocha + Baidu）。",
+      "version": "1.0.5",
       "author": {
         "name": "liantian"
       },
       "license": "MIT",
       "keywords": [
-        "环境配置",
-        "工具安装",
-        "Python",
-        "Pandoc",
-        "markitdown",
-        "API Key",
-        "初始化"
-      ],
-      "homepage": "https://github.com/liantian-cn/cc-marketplace/",
-      "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/liantian-env",
-      "category": "工具"
-    },
-    {
-      "name": "advanced-search",
-      "source": "./plugins/advanced-search",
-      "description": "高级网络搜索与深度研究工具包，基于 Tavily API 结合内置 WebSearch 双引擎编排，支持搜索、内容提取、网页抓取、URL 发现与深度研究。",
-      "version": "1.0.1",
-      "author": {
-        "name": "liantian"
-      },
-      "license": "MIT",
-      "keywords": [
+        "基础环境",
+        "必备",
+        "开发方法",
+        "构思",
+        "规划",
+        "TDD",
+        "调试",
+        "代码审查",
+        "验证",
         "网络搜索",
-        "网页抓取",
-        "内容提取",
-        "深度研究",
-        "Tavily",
-        "web-search",
-        "crawl",
-        "research",
-        "extract"
+        "深度研究"
       ],
       "homepage": "https://github.com/liantian-cn/cc-marketplace/",
-      "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/advanced-search",
+      "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/essentials",
       "category": "工具"
     }
   ]

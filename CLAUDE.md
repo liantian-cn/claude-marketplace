@@ -92,7 +92,7 @@ All qcc-due-diligence skills use a consistent caching convention:
 
 ### Skill Dependency Graph
 
-`liantian-env` is a **foundational dependency** for all other plugins. It installs Python 3.12+, Pandoc 2.0+, markitdown, and configures API keys. Business skills in `qcc-due-diligence` assume this environment is already set up.
+`essentials` is a **foundational dependency** for all other plugins. It provides 15 skills covering development methodology (brainstorming, planning, TDD, debugging, code review, etc.) and five-engine web search (WebSearch + Tavily + Bailian + Bocha + Baidu). Business skills in `qcc-due-diligence` assume this environment is already set up.
 
 ## CI
 
@@ -104,9 +104,8 @@ All qcc-due-diligence skills use a consistent caching convention:
 
 | Plugin | Skills | Purpose |
 |--------|--------|---------|
-| `liantian-env` | 1 | Toolchain install (Python/Pandoc/markitdown) + API key config |
+| `essentials` | 15 | Development methodology + five-engine web search (WebSearch/Tavily/Bailian/Bocha/Baidu) |
 | `qcc-due-diligence` | 12 | Enterprise due diligence via QCC database (KYB, UBO, credit, litigation, etc.) |
-| `advanced-search` | 1 | Dual-engine web search orchestration (WebSearch + Tavily) with deep research |
 
 ## Versioning
 

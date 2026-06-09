@@ -9,50 +9,38 @@
 ### 第一步：添加市场
 
 ```bash
-/plugin marketplace add https://gitee.com/liantian-cn/cc-marketplace.git
+claude plugin marketplace add --scope user https://gitee.com/liantian-cn/cc-marketplace.git
 ```
 
-### 第二步：安装环境配置工具
+### 第二步：安装必备基础环境插件
 
 ```bash
-/plugin install liantian-env@liantian-cc-market
+claude plugin install --scope user essentials@liantian-cc-market
 ```
 
-### 第三步：使用环境配置技能完成初始化
+### 第三步：配置环境
 
-```
-/liantian-env
-```
-
-该技能将引导你完成：
+按照 [INSTALLER.md](./INSTALLER.md) 完成工具链安装和 API Key 配置：
 
 - Python 3.12+、Pandoc 2.0+、markitdown 工具链安装
 - 企查查（QCC）、Tavily、博查、百度等第三方平台 API Key 配置
-- 其他插件（如 `qcc-due-diligence`）的安装
 
-### 第四步：安装其他业务插件
-
-按需安装业务插件：
+### 第四步（可选）：安装企查查尽职调查工具包
 
 ```bash
-# 安装企查查尽职调查工具包
-/plugin install qcc-due-diligence@liantian-cc-market
-
-# 安装高级网络搜索与深度研究工具包
-/plugin install advanced-search@liantian-cc-market
+claude plugin install --scope user qcc-due-diligence@liantian-cc-market
 ```
 
-> **提示**：`advanced-search` 插件依赖 `TAVILY_API_KEY`，使用前请确保已通过 `/liantian-env` 完成 Tavily API Key 配置（可访问 [https://app.tavily.com/home](https://app.tavily.com/home) 获取）。
+> **提示**：`essentials` 已内置五引擎并行搜索（WebSearch + Tavily + Bailian + Bocha + Baidu），支持优雅降级——未配置的引擎自动跳过。如需启用全部引擎，请按照 [INSTALLER.md](./INSTALLER.md) 完成相关 API Key 配置。
 
-> 后续如需单独安装某个业务插件，可使用 `/plugin install <插件名>@liantian-cc-market`。
+> 后续如需单独安装某个业务插件，可使用 `claude plugin install --scope user <插件名>@liantian-cc-market`。
 
 ## 已收录插件
 
 | 插件                                              | 版本  | 描述                                                                                |
 | ------------------------------------------------- | ----- | ----------------------------------------------------------------------------------- |
-| [liantian-env](./plugins/liantian-env/)           | 1.0.2 | liantian cc market 环境配置工具包，帮助用户完成 Python/Pandoc/markitdown 工具链安装、第三方平台 API Key 配置、以及插件安装 |
+| [essentials](./plugins/essentials/)               | 1.0.5 | liantian cc market 必备基础环境，包含 15 个技能——高效开发方法（构思、规划、TDD、调试、代码审查等）及五合一搜索引擎编排（WebSearch + Tavily + Bailian + Bocha + Baidu） |
 | [qcc-due-diligence](./plugins/qcc-due-diligence/) | 1.0.1 | 面向金融机构的企业尽职调查工具包，通过企查查（QCC）商业数据库提供 KYB 核验、UBO 穿透、授信尽调、贷后监控、破产预警、诉讼分析、贸易融资合规等 12 项核心业务能力 |
-| [advanced-search](./plugins/advanced-search/)               | 1.0.1 | 五合一搜索引擎编排器 — WebSearch + Tavily + Bailian + Bocha + Baidu 五大搜索引擎并行调用，自动去重合并，覆盖全球中英文内容 |
 
 ## 仓库结构
 
@@ -63,9 +51,11 @@ claude-marketplace/
 ├── .github/workflows/
 │   └── validate.yml              # CI 自动校验 marketplace 与插件结构
 ├── plugins/                      # 插件存放目录
-│   ├── liantian-env/             # 环境配置工具包
-│   ├── qcc-due-diligence/        # 企查查企业尽职调查插件
-│   └── advanced-search/           # 高级网络搜索与深度研究插件
+│   ├── essentials/               # 必备基础环境
+│   └── qcc-due-diligence/        # 企查查企业尽职调查插件
+├── scripts/
+│   └── set_env.py                # 安全读写 settings.json 的辅助脚本
+├── INSTALLER.md                  # 环境配置指南
 ├── .gitignore                    # 忽略本地配置与缓存
 └── README.md                     # 本文件
 ```

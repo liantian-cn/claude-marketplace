@@ -1,0 +1,22 @@
+{
+  "name": "essentials",
+  "version": "1.0.5",
+  "description": "liantian cc market 必备基础环境，包含 15 个技能——高效开发方法（构思、规划、TDD、调试、代码审查、验证等）及五合一搜索引擎编排（WebSearch + Tavily + Bailian + Bocha + Baidu）。",
+  "author": {
+    "name": "liantian"
+  },
+  "license": "MIT",
+  "keywords": [
+    "基础环境",
+    "必备",
+    "开发方法",
+    "构思",
+    "规划",
+    "TDD",
+    "调试",
+    "代码审查",
+    "验证",
+    "网络搜索",
+    "深度研究"
+  ]
+}
