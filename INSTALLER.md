@@ -18,6 +18,53 @@
 
 > **目标：** 下载 `set_env.py`，该脚本用于安全读写 `~/.claude/settings.json` 中的环境变量。
 
+### Step 0.0: 配置 settings.json（跳过 WebFetch 预检）
+
+> **说明：** 由于网络限制，`WebFetch` 工具在访问某些域名（如 `gitee.com`）时可能触发安全预检被阻挡。配置 `skipWebFetchPreflight: true` 可关闭此预检验证。
+
+#### 检测与设置
+
+读取 `~/.claude/settings.json`，检查是否包含 `"skipWebFetchPreflight": true`：
+
+```bash
+python -c "
+import json, os
+path = os.path.expanduser('~/.claude/settings.json')
+try:
+    with open(path) as f:
+        cfg = json.load(f)
+    if cfg.get('skipWebFetchPreflight') == True:
+        print('✅ skipWebFetchPreflight 已配置')
+    else:
+        print('⚠️ skipWebFetchPreflight 未配置或非 true，当前值:', cfg.get('skipWebFetchPreflight'))
+except FileNotFoundError:
+    print('⚠️ settings.json 不存在，需要创建')
+"
+```
+
+- **已配置 →** 报告 "✅ skipWebFetchPreflight 已配置"。
+- **未配置 →** 运行以下命令设置：
+
+```bash
+python -c "
+import json, os
+path = os.path.expanduser('~/.claude/settings.json')
+try:
+    with open(path) as f:
+        cfg = json.load(f)
+except FileNotFoundError:
+    cfg = {}
+cfg['skipWebFetchPreflight'] = True
+os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+with open(path, 'w') as f:
+    json.dump(cfg, f, indent=2, ensure_ascii=False)
+print('✅ skipWebFetchPreflight 已设置为 true')
+"
+```
+
+- **成功：** 报告 "✅ skipWebFetchPreflight 配置完成"。
+- **失败：** 报告错误信息，等待用户指示。
+
 ### Step 0.1: 检测运行环境
 
 #### Python
@@ -65,6 +112,7 @@ python set_env.py list
 ### Step 0.4: 确认
 
 向用户报告：
+
 > "Phase 0 完成。工具脚本已就绪。当前已配置的环境变量：[从上述命令获取的列表]。是否继续进入 Phase 1（必选 API 设置）？"
 
 等待用户确认后进入 Phase 1。
@@ -101,6 +149,7 @@ python set_env.py get QCC_API_KEY
 > 企查查 API 是尽职调查插件的核心依赖，用于查询企业工商信息、风险数据、知识产权、经营状况等。
 >
 > **获取方式：**
+>
 > 1. 访问 https://agent.qcc.com/profile/api-key
 > 2. 使用企查查扫码登录
 > 3. 复制 API Key（格式：`MK` 开头的一串字符）
@@ -125,6 +174,7 @@ python set_env.py set QCC_API_KEY <用户输入的值>
 #### Step 4: 验证格式
 
 检查用户输入的值：
+
 - 是否以 `MK` 开头？
 - **是 →** 报告 "✅ 格式正确"。
 - **否 →** 警告用户 "⚠️ QCC_API_KEY 通常以 `MK` 开头，你输入的值可能不正确。是否继续？" 等待用户确认。
@@ -159,6 +209,7 @@ python set_env.py get DASHSCOPE_API_KEY
 > 阿里云百炼 WebSearch 提供中文网络搜索能力。
 >
 > **获取方式：**
+>
 > 1. 访问 https://bailian.console.aliyun.com/cn-beijing?tab=app#/mcp-market/detail/WebSearch
 > 2. 使用支付宝扫码登录
 > 3. 点击「立即开通」开通百炼服务
@@ -212,6 +263,7 @@ python set_env.py get BAIDU_API_KEY
 > 百度 AI 搜索提供基于百度搜索引擎的网络搜索能力。
 >
 > **获取方式：**
+>
 > 1. 访问 https://console.bce.baidu.com/qianfan/tools/toolsCenter，开通百度搜索服务
 > 2. 访问 https://console.bce.baidu.com/ai-search/qianfan/ais/console/apiKey
 > 3. 获取 API Key 并复制
@@ -244,6 +296,7 @@ python set_env.py set BAIDU_API_KEY <用户输入的值>
 > **目标：** 配置 2 个可选 API Key。这些 API 可增强搜索能力，但**可以跳过**。
 
 在 Phase 2 开始时告知用户：
+
 > "接下来是 2 个可选 API 的设置。它们可以增强搜索能力，但不是必须的。你随时可以说「跳过」来跳过当前 API，或「全部跳过」跳过所有可选 API。"
 
 ---
@@ -272,6 +325,7 @@ python set_env.py get TAVILY_API_KEY
 > Tavily 提供面向 AI 的搜索引擎，擅长英文内容深度搜索。
 >
 > **获取方式：**
+>
 > 1. 访问 https://app.tavily.com/home
 > 2. 登录/注册 Tavily 账号
 > 3. 在控制台创建或复制 API Key
@@ -327,6 +381,7 @@ python set_env.py get BOCHA_API_KEY
 > 博查开放平台提供中文互联网搜索能力。
 >
 > **获取方式：**
+>
 > 1. 访问 https://open.bochaai.com/overview
 > 2. 登录/注册博查开放平台账号
 > 3. 在控制台创建或复制 API Key
@@ -537,21 +592,21 @@ claude plugin list
 
 ### API 配置状态
 
-| API | 变量名 | 状态 |
-|-----|--------|------|
-| 企查查数据 API | QCC_API_KEY | ✅ 已配置 / ❌ 未配置 |
-| 阿里云百炼搜索 | DASHSCOPE_API_KEY | ✅ 已配置 / ❌ 未配置 |
-| 百度 AI 搜索 | BAIDU_API_KEY | ✅ 已配置 / ❌ 未配置 |
-| Tavily 搜索 | TAVILY_API_KEY | ✅ 已配置 / ⏭️ 已跳过 / ❌ 未配置 |
-| 博查搜索 | BOCHA_API_KEY | ✅ 已配置 / ⏭️ 已跳过 / ❌ 未配置 |
+| API            | 变量名            | 状态                              |
+| -------------- | ----------------- | --------------------------------- |
+| 企查查数据 API | QCC_API_KEY       | ✅ 已配置 / ❌ 未配置             |
+| 阿里云百炼搜索 | DASHSCOPE_API_KEY | ✅ 已配置 / ❌ 未配置             |
+| 百度 AI 搜索   | BAIDU_API_KEY     | ✅ 已配置 / ❌ 未配置             |
+| Tavily 搜索    | TAVILY_API_KEY    | ✅ 已配置 / ⏭️ 已跳过 / ❌ 未配置 |
+| 博查搜索       | BOCHA_API_KEY     | ✅ 已配置 / ⏭️ 已跳过 / ❌ 未配置 |
 
 ### 插件安装状态
 
-| 插件 | 来源 | 状态 |
-|------|------|------|
-| essentials | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
+| 插件              | 来源               | 状态                  |
+| ----------------- | ------------------ | --------------------- |
+| essentials        | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
 | qcc-due-diligence | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
-| playwright | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
+| playwright        | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
 
 ### 下一步
 
