@@ -116,7 +116,7 @@ python set_env.py list
 
 ## Phase 1: 必选 API 设置
 
-> **目标：** 配置 3 个必选 API Key。这些 API 是插件运行的基础依赖，**不可跳过**。
+> **目标：** 配置 4 个必选 API Key。这些 API 是插件运行的基础依赖，**不可跳过**。
 
 ---
 
@@ -282,7 +282,66 @@ python set_env.py set BAIDU_API_KEY <用户输入的值>
 
 #### Step 5: 确认
 
-报告 "✅ BAIDU_API_KEY 配置完成"，等待用户确认后进入 Phase 2。
+报告 "✅ BAIDU_API_KEY 配置完成"，等待用户确认后进入 1.4。
+
+---
+
+### 1.4 IFIND_API_KEY（同花顺 iFinD 金融数据 API）
+
+**用途：** 同花顺 iFinD MCP 数据服务——股票、基金、宏观经济、行业经济、新闻公告、债券、港美股、指数板块数据查询。
+**必选/可选：** 🔴 必选，不可跳过
+**变量名：** `IFIND_API_KEY`
+
+#### Step 1: 检测是否已配置
+
+```bash
+python set_env.py get IFIND_API_KEY
+```
+
+- **已配置 →** 报告 "✅ IFIND_API_KEY 已配置" 并显示当前值（脱敏），跳到 Step 5 确认。
+- **未配置 →** 进入 Step 2。
+
+#### Step 2: 提示用户获取
+
+向用户输出：
+
+> "### 配置 IFIND_API_KEY（同花顺 iFinD 金融数据）
+>
+> 同花顺 iFinD MCP 提供股票、基金、宏观经济、行业经济、新闻公告、债券、港美股及指数板块等金融数据查询能力。
+>
+> **获取方式：**
+>
+> 1. 访问 https://mcp.51ifind.com/
+> 2. 通过页面右上角登录（支持同花顺 APP 账号或 iFinD 账号）
+> 3. 新用户登录后直接开通试用
+> 4. 进入「个人中心」→「密钥」获取 MCP 密钥
+> 5. 💡 每月有免费额度
+> 6. ⚠️ 注意：密钥很长，属于正常现象，请完整复制
+>
+> **请输入你的 IFIND_API_KEY：**"
+
+等待用户输入。
+
+#### Step 3: 设置 API Key
+
+用户输入后，运行：
+
+```bash
+python set_env.py set IFIND_API_KEY <用户输入的值>
+```
+
+- **成功：** 报告 "已写入 IFIND_API_KEY"。
+- **失败：** 报告错误信息，等待用户指示。
+
+#### Step 4: 验证格式
+
+- 密钥是否非空且长度较长（通常 > 100 字符）？
+- **是 →** 报告 "✅ 格式正确"。
+- **否 →** 警告用户 "⚠️ IFIND_API_KEY 通常是一段较长的密钥字符串，你输入的值似乎偏短。是否继续？" 等待用户确认。
+
+#### Step 5: 确认
+
+报告 "✅ IFIND_API_KEY 配置完成"，等待用户确认后进入 Phase 2。
 
 ---
 
@@ -672,7 +731,45 @@ claude plugin list
 
 #### Step 4: 确认
 
-报告 "✅ superpowers 插件已就绪"，等待用户确认后进入 Phase 4。
+报告 "✅ superpowers 插件已就绪"，等待用户确认后进入 3.8。
+
+---
+
+### 3.8 安装 iFinD 插件
+
+> **说明：** iFinD（同花顺）提供金融数据查询能力——A股/基金/债券/港美股/指数/板块行情与财务数据、宏观经济指标、行业经济指标、新闻公告搜索、智能选股/选基等。依赖 `IFIND_API_KEY` 环境变量。
+
+#### Step 1: 检测是否已安装
+
+```bash
+claude plugin list
+```
+
+检查输出中是否包含 `ifind@liantian-cc-market`。
+
+- **已安装 →** 报告 "✅ iFinD 已安装"，跳到 Step 4。
+- **未安装 →** 进入 Step 2。
+
+#### Step 2: 安装插件
+
+```bash
+claude plugin install --scope user ifind@liantian-cc-market
+```
+
+- **成功：** 报告 "✅ iFinD 安装成功"。
+- **失败：** 报告错误信息，等待用户指示。
+
+#### Step 3: 验证
+
+```bash
+claude plugin list
+```
+
+确认 `ifind@liantian-cc-market` 出现在列表中且状态为 enabled。
+
+#### Step 4: 确认
+
+报告 "✅ iFinD 插件已就绪"，等待用户确认后进入 Phase 4。
 
 ---
 
@@ -706,6 +803,7 @@ claude plugin list
 | 企查查数据 API | QCC_API_KEY       | ✅ 已配置 / ❌ 未配置             |
 | 阿里云百炼搜索 | DASHSCOPE_API_KEY | ✅ 已配置 / ❌ 未配置             |
 | 百度 AI 搜索   | BAIDU_API_KEY     | ✅ 已配置 / ❌ 未配置             |
+| 同花顺金融数据 | IFIND_API_KEY     | ✅ 已配置 / ❌ 未配置             |
 | Tavily 搜索    | TAVILY_API_KEY    | ✅ 已配置 / ⏭️ 已跳过 / ❌ 未配置 |
 | 博查搜索       | BOCHA_API_KEY     | ✅ 已配置 / ⏭️ 已跳过 / ❌ 未配置 |
 
@@ -719,6 +817,7 @@ claude plugin list
 | finance           | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
 | skill-creator     | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
 | superpowers       | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
+| iFinD             | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
 
 ### 下一步
 
@@ -763,6 +862,14 @@ claude plugin list
 - **登录方式：** 注册/登录博查开放平台账号
 - **费用：** 无免费额度，按次付费
 - **格式：** `sk-` 开头
+
+### 同花顺 iFinD API Key（IFIND_API_KEY）
+
+- **获取地址：** https://mcp.51ifind.com/
+- **登录方式：** 同花顺 APP 账号或 iFinD 账号登录
+- **步骤：** 登录后进入「个人中心」→「密钥」获取 MCP 密钥
+- **费用：** 每月免费额度
+- **格式：** 较长密钥字符串（> 100 字符为正常现象），请完整复制
 
 ### 百度搜索 API Key（BAIDU_API_KEY）
 
