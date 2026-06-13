@@ -1,0 +1,21 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
+  "author": {
+    "name": "Microsoft"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "playwright",
+    "browser",
+    "automation",
+    "testing",
+    "e2e",
+    "screenshots",
+    "web-scraping"
+  ],
+  "homepage": "https://playwright.dev",
+  "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/playwright",
+  "category": "工具"
+}
