@@ -16,43 +16,40 @@
 
 ## Phase 0: 准备工具脚本
 
-> **目标：** 下载 `set_env.py`，该脚本用于安全读写 `~/.claude/settings.json` 中的环境变量。
+> **目标：** 下载并运行工具脚本，配置 Claude Code 环境。
 
-### Step 0.0: 配置 settings.json（跳过 WebFetch 预检）
+> **平台提示：** 以下步骤涉及下载文件。Agent 应根据当前运行环境选择对应命令：
+> - **Linux / macOS：** 使用 `curl -o <文件名> <URL>`
+> - **Windows：** 使用 PowerShell 的 `Invoke-WebRequest -Uri <URL> -OutFile <文件名>`
 
-> **说明：** 由于网络限制，`WebFetch` 工具在访问某些域名（如 `gitee.com`）时可能触发安全预检被阻挡。配置 `skipWebFetchPreflight: true` 可关闭此预检验证。
+### Step 0.0: 配置 settings.json（跳过 WebFetch 预检 + 自动授权）
 
-#### 检测与设置
+> **说明：** 由于网络限制，`WebFetch` 工具在访问某些域名（如 `gitee.com`）时可能触发安全预检被阻挡。同时将权限模式设为 `auto` 以减少手动授权提示。`fix_claude.py` 脚本会自动完成这两项配置。
 
-读取 `~/.claude/settings.json`，检查是否包含 `"skipWebFetchPreflight": true`：
+#### 下载 fix_claude.py
 
+根据当前操作系统选择对应命令：
+
+**Linux / macOS：**
 ```bash
-python -c "
-import json, os, sys
-sys.stdout.reconfigure(encoding='utf-8')
-path = os.path.expanduser('~/.claude/settings.json')
-try:
-    with open(path, encoding='utf-8') as f:
-        cfg = json.load(f)
-    if cfg.get('skipWebFetchPreflight') == True:
-        print('[OK] skipWebFetchPreflight already configured')
-    else:
-        print('[WARN] skipWebFetchPreflight not configured or not true, current value:', cfg.get('skipWebFetchPreflight'))
-except FileNotFoundError:
-    print('[WARN] settings.json does not exist, needs creation')
-"
+curl -o fix_claude.py https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/fix_claude.py
 ```
 
-- **已配置 →** 报告 "✅ skipWebFetchPreflight 已配置"。
-- **未配置 →** 运行以下命令设置：
-
-```bash
-python -c "
-
-"
+**Windows（PowerShell）：**
+```powershell
+Invoke-WebRequest -Uri https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/fix_claude.py -OutFile fix_claude.py
 ```
 
-- **成功：** 报告 "✅ skipWebFetchPreflight 配置完成"。
+- **成功：** 报告 "✅ fix_claude.py 下载完成"。
+- **失败：** 提示用户 "下载失败，请检查网络连接。可尝试手动下载：https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/fix_claude.py"。
+
+#### 运行 fix_claude.py
+
+```bash
+python fix_claude.py
+```
+
+- **成功：** 报告 "✅ skipWebFetchPreflight 已配置，权限模式已设为 auto"。
 - **失败：** 报告错误信息，等待用户指示。
 
 ### Step 0.1: 检测运行环境
@@ -83,8 +80,16 @@ node --version
 
 ### Step 0.2: 下载 set_env.py
 
+根据当前操作系统选择对应命令：
+
+**Linux / macOS：**
 ```bash
 curl -o set_env.py https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/set_env.py
+```
+
+**Windows（PowerShell）：**
+```powershell
+Invoke-WebRequest -Uri https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/set_env.py -OutFile set_env.py
 ```
 
 - **成功：** 报告 "✅ set_env.py 下载完成"，进入 Step 0.3。
