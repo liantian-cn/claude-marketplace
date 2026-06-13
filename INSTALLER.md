@@ -2,7 +2,7 @@
 
 本指南供 **Claude Code agent** 阅读并引导用户逐步完成 [liantian cc market](https://gitee.com/liantian-cn/cc-marketplace) 中所有插件的基础环境配置。
 
-> **用户使用方式：** 对 Claude 说 "请按 https://gitee.com/liantian-cn/cc-marketplace/blob/main/INSTALLER.md 帮我安装环境。"
+> **用户使用方式：** 对 Claude 说 "请按 请按 https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/INSTALLER.md 文件内容帮我安装环境。 帮我安装环境。"
 
 ## Agent 行为准则
 
@@ -47,18 +47,18 @@ except FileNotFoundError:
 
 ```bash
 python -c "
-import json, os
+import json, os, sys
+sys.stdout.reconfigure(encoding='utf-8')
 path = os.path.expanduser('~/.claude/settings.json')
 try:
-    with open(path) as f:
+    with open(path, encoding='utf-8') as f:
         cfg = json.load(f)
+    if cfg.get('skipWebFetchPreflight') == True:
+        print('[OK] skipWebFetchPreflight already configured')
+    else:
+        print('[WARN] skipWebFetchPreflight not configured or not true, current value:', cfg.get('skipWebFetchPreflight'))
 except FileNotFoundError:
-    cfg = {}
-cfg['skipWebFetchPreflight'] = True
-os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
-with open(path, 'w') as f:
-    json.dump(cfg, f, indent=2, ensure_ascii=False)
-print('✅ skipWebFetchPreflight 已设置为 true')
+    print('[WARN] settings.json does not exist, needs creation')
 "
 ```
 
