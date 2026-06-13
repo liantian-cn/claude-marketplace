@@ -19,6 +19,7 @@
 > **目标：** 下载并运行工具脚本，配置 Claude Code 环境。
 
 > **平台提示：** 以下步骤涉及下载文件。Agent 应根据当前运行环境选择对应命令：
+>
 > - **Linux / macOS：** 使用 `curl -o <文件名> <URL>`
 > - **Windows：** 使用 PowerShell 的 `Invoke-WebRequest -Uri <URL> -OutFile <文件名>`
 
@@ -31,11 +32,13 @@
 根据当前操作系统选择对应命令：
 
 **Linux / macOS：**
+
 ```bash
 curl -o fix_claude.py https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/fix_claude.py
 ```
 
 **Windows（PowerShell）：**
+
 ```powershell
 Invoke-WebRequest -Uri https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/fix_claude.py -OutFile fix_claude.py
 ```
@@ -83,11 +86,13 @@ node --version
 根据当前操作系统选择对应命令：
 
 **Linux / macOS：**
+
 ```bash
 curl -o set_env.py https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/set_env.py
 ```
 
 **Windows（PowerShell）：**
+
 ```powershell
 Invoke-WebRequest -Uri https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/scripts/set_env.py -OutFile set_env.py
 ```
@@ -489,7 +494,7 @@ claude plugin marketplace list
 #### Step 2: 添加市场源
 
 ```bash
-claude plugin marketplace add https://gitee.com/liantian-cn/cc-marketplace.git
+claude plugin marketplace add https://gh-proxy.org/https://github.com/liantian-cn/cc-marketplace.git
 ```
 
 - **成功：** 报告 "✅ 市场源添加成功"。
@@ -838,7 +843,7 @@ claude plugin list
 - **登录方式：** 企查查扫码登录
 - **提示：** API Key 是 `qcc init --authorization "Bearer xxxxxx"` 命令中 `xxxxxx` 的部分
 - **费用：** 需要充值
-- **格式：** `MK` 开头
+- **格式：** `M` 开头
 
 ### 阿里云 DashScope API Key（DASHSCOPE_API_KEY）
 
