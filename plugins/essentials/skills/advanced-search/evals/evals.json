@@ -16,7 +16,13 @@
     {
       "id": 3,
       "prompt": "Can you do a deep comparison of Python's FastAPI vs Go's Gin framework for building REST APIs? I want to understand performance, developer experience, ecosystem maturity, and which one would be better for a startup building microservices.",
-      "expected_output": "Comprehensive comparison report drawing from all five engines. Should use deep research capabilities (tavily_research), WebSearch for broad coverage, Bailian and Baidu for Chinese-language ecosystem perspectives, and Bocha for semantic search of nuanced angles. Results should be well-organized with clear sections for each comparison dimension. Should note which engines contributed to the report.",
+      "expected_output": "Comprehensive comparison report drawing from all six engines. Should use deep research capabilities (tavily_research), WebSearch for broad coverage, Bailian and Baidu for Chinese-language ecosystem perspectives, WeChat for Chinese-language deep analysis articles, and Bocha for semantic search of nuanced angles. Results should be well-organized with clear sections for each comparison dimension. Should note which engines contributed to the report.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "我想了解2026年中国人工智能行业的最新发展趋势和投资机会，特别是大模型、AI应用和政策方面的动态。",
+      "expected_output": "Combined search results from all six engines covering Chinese AI industry trends in 2026. WeChat (微信公众号) results should provide unique long-form analysis from industry experts and think tanks that other engines cannot access. Baidu should cover 百家号/百度百科 content, Bailian should cover 阿里生态 technical content. All results should be deduplicated with source provenance tags including [WeChat]. If WeChat is unavailable due to anti-crawling, the search should gracefully continue with the other five engines.",
       "files": []
     }
   ]
