@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "liantian-cn 的 Claude Code 插件市场",
-    "version": "1.0.9"
+    "version": "1.0.10"
   },
   "plugins": [
     {
@@ -83,6 +83,79 @@
       "homepage": "https://playwright.dev",
       "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/playwright",
       "category": "工具"
+    },
+    {
+      "name": "finance",
+      "source": "./plugins/finance",
+      "description": "金融分析工具包，包含 3 个技能——财务分析师（比率分析、DCF 估值、预算编制、预测）、SaaS 指标教练（ARR、MRR、流失率、CAC、LTV、NRR、Quick Ratio、12 个月预测）及商业投资顾问。附带 7 个 Python 自动化工具。",
+      "version": "2.9.0",
+      "author": {
+        "name": "Alireza Rezvani",
+        "url": "https://alirezarezvani.com"
+      },
+      "license": "MIT",
+      "keywords": [
+        "金融",
+        "财务分析",
+        "DCF",
+        "估值",
+        "SaaS",
+        "指标",
+        "比率分析",
+        "预算编制",
+        "预测",
+        "投资顾问"
+      ],
+      "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/finance",
+      "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/finance",
+      "category": "商业分析"
+    },
+    {
+      "name": "skill-creator",
+      "source": "./plugins/skill-creator",
+      "description": "技能创建与管理工具——从零创建新技能、优化现有技能、运行 evals 测试技能表现、基准测试与方差分析。适用于需要定制化技能开发的场景。",
+      "version": "1.0.0",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "license": "MIT",
+      "keywords": [
+        "技能创建",
+        "技能优化",
+        "evals",
+        "基准测试",
+        "技能开发"
+      ],
+      "homepage": "https://github.com/liantian-cn/cc-marketplace/",
+      "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/skill-creator",
+      "category": "工具"
+    },
+    {
+      "name": "superpowers",
+      "source": "./plugins/superpowers",
+      "description": "Superpowers——完整的软件开发方法论，包含 14 个技能：构思、规划、TDD、系统调试、代码审查、并行子代理调度、Git Worktree 等。从头脑风暴到 PR 提交的全流程自动化协作模式。",
+      "version": "5.1.0",
+      "author": {
+        "name": "Jesse Vincent",
+        "email": "jesse@fsck.com"
+      },
+      "license": "MIT",
+      "keywords": [
+        "superpowers",
+        "开发方法",
+        "TDD",
+        "调试",
+        "代码审查",
+        "最佳实践",
+        "工作流",
+        "构思",
+        "子代理",
+        "协作"
+      ],
+      "homepage": "https://github.com/obra/superpowers",
+      "repository": "https://github.com/liantian-cn/cc-marketplace/tree/main/plugins/superpowers",
+      "category": "开发方法"
     }
   ]
 }
