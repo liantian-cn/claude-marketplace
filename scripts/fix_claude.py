@@ -8,7 +8,7 @@ try:
         cfg = json.load(f)
 except FileNotFoundError:
     cfg = {
-        "skipWebFetchPreflight": False,
+        "skipWebFetchPreflight": True,
         "permissions": {
             "defaultMode": "auto"
         }
