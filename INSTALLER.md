@@ -28,25 +28,6 @@
 
 ```bash
 python -c "
-import json, os
-path = os.path.expanduser('~/.claude/settings.json')
-try:
-    with open(path) as f:
-        cfg = json.load(f)
-    if cfg.get('skipWebFetchPreflight') == True:
-        print('✅ skipWebFetchPreflight 已配置')
-    else:
-        print('⚠️ skipWebFetchPreflight 未配置或非 true，当前值:', cfg.get('skipWebFetchPreflight'))
-except FileNotFoundError:
-    print('⚠️ settings.json 不存在，需要创建')
-"
-```
-
-- **已配置 →** 报告 "✅ skipWebFetchPreflight 已配置"。
-- **未配置 →** 运行以下命令设置：
-
-```bash
-python -c "
 import json, os, sys
 sys.stdout.reconfigure(encoding='utf-8')
 path = os.path.expanduser('~/.claude/settings.json')
@@ -59,6 +40,15 @@ try:
         print('[WARN] skipWebFetchPreflight not configured or not true, current value:', cfg.get('skipWebFetchPreflight'))
 except FileNotFoundError:
     print('[WARN] settings.json does not exist, needs creation')
+"
+```
+
+- **已配置 →** 报告 "✅ skipWebFetchPreflight 已配置"。
+- **未配置 →** 运行以下命令设置：
+
+```bash
+python -c "
+
 "
 ```
 
