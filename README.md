@@ -18,6 +18,7 @@
 | ------------------------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [essentials](./plugins/essentials/)               | 1.0.8 | liantian cc market 必备基础环境，包含 15 个技能——高效开发方法（构思、规划、TDD、调试、代码审查等）及多引擎搜索编排（WebSearch + Tavily + Bailian + Bocha + Baidu） |
 | [qcc-due-diligence](./plugins/qcc-due-diligence/) | 1.0.1 | 面向金融机构的企业尽职调查工具包，通过企查查（QCC）商业数据库提供 KYB 核验、UBO 穿透、授信尽调、贷后监控、破产预警、诉讼分析、贸易融资合规等 12 项核心业务能力         |
+| [iFinD](./plugins/iFinD/)                         | 1.2.3 | 同花顺金融数据一站式查询，通过 iFinD MCP API 覆盖股票、基金、宏观经济、行业经济、新闻公告、债券、港美股及指数板块数据，支持智能选股、智能选基                             |
 | [playwright](./plugins/playwright/)               | 1.0.0 | 浏览器自动化与端到端测试 MCP Server——网页截图、表单填写、元素点击、自动化测试工作流                                                                                    |
 | [finance](./plugins/finance/)                     | 2.9.0 | 金融分析工具包，包含 3 个技能——财务分析师（比率分析、DCF 估值、预算编制、预测）、SaaS 指标教练及商业投资顾问。附带 7 个 Python 自动化工具                               |
 | [skill-creator](./plugins/skill-creator/)         | 1.0.0 | 技能创建与管理——从零创建新技能、优化现有技能、运行 evals 测试、基准测试与方差分析                                                                                       |
@@ -34,6 +35,7 @@ claude-marketplace/
 ├── plugins/                      # 插件存放目录
 │   ├── essentials/               # 必备基础环境
 │   ├── qcc-due-diligence/        # 企查查企业尽职调查插件
+│   ├── iFinD/                    # 同花顺金融数据查询
 │   ├── playwright/               # 浏览器自动化与端到端测试
 │   ├── finance/                  # 金融分析工具包
 │   ├── skill-creator/            # 技能创建与管理
