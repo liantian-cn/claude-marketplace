@@ -9,7 +9,7 @@
 对 Claude 说：
 
 ```plain
-请克隆https://gitee.com/liantian-cn/cc-marketplace.git，然后按根目录的INSTALLER.md 帮我安装环境。
+请不使用fetch获取 https://raw.giteeusercontent.com/liantian-cn/cc-marketplace/raw/main/INSTALLER.md 文件，然后按内容帮我安装环境。
 ```
 
 ## 已收录插件
