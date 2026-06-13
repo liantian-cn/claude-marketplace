@@ -3,136 +3,37 @@ name: Sync External Plugins and Skills
 on:
   schedule:
     # Weekly sync: Monday at 03:17 UTC (off-peak, avoids :00/:30 stampede)
-    # GitHub cron uses UTC. Valid ranges: min 0-59, hour 0-23, dom 1-31, month 1-12, dow 0-6 (Sun-Sat)
     - cron: "17 3 * * 1"
   workflow_dispatch:
-    # Manual trigger from Actions tab
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # needed to push the sync branch
-      pull-requests: write # needed to create the PR
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@9f698171ed81b15d1823a05fc7211befd50c8ae0 # v6.0.3
+        uses: actions/checkout@9f698171ed81b15d1823a05fc7211befd50c8ae0  # v6.0.3
 
       - name: Sync external content
         shell: bash
-        run: |
-          set -euo pipefail
-
-          # ── Helpers ──────────────────────────────────────────────
-          TEMP_DIR=$(mktemp -d)
-          trap 'rm -rf "$TEMP_DIR"' EXIT
-
-          copy_dir() {
-            # copy_dir <src> <dest> [label]
-            local src="$1"
-            local dest="$2"
-            local label="${3:-$(basename "$dest")}"
-            if [ -d "$src" ]; then
-              rm -rf "$dest"
-              cp -r "$src" "$dest"
-              echo "  ✓ ${label} synced"
-            else
-              echo "  ⚠ WARNING: source directory not found — ${src}"
-            fi
-          }
-
-          # ═══════════════════════════════════════════════════════════
-          # PLUGINS — sync to plugins/
-          # ═══════════════════════════════════════════════════════════
-          echo ""
-          echo "=== Syncing External Plugins ==="
-
-          # ── 1. anthropics/claude-plugins-official ──
-          #    → external_plugins/playwright
-          #    → plugins/skill-creator
-          echo ""
-          echo "[1/4] Cloning anthropics/claude-plugins-official (shallow)..."
-          git clone --depth 1 --quiet \
-            https://github.com/anthropics/claude-plugins-official.git \
-            "$TEMP_DIR/claude-plugins-official"
-
-          copy_dir "$TEMP_DIR/claude-plugins-official/external_plugins/playwright" \
-                   "plugins/playwright" \
-                   "playwright (plugin)"
-
-          copy_dir "$TEMP_DIR/claude-plugins-official/plugins/skill-creator" \
-                   "plugins/skill-creator" \
-                   "skill-creator (plugin)"
-
-          # ── 2. obra/superpowers ──
-          #    → entire repo, excluding .git and .github
-          echo ""
-          echo "[2/4] Cloning obra/superpowers (shallow)..."
-          git clone --depth 1 --quiet \
-            https://github.com/obra/superpowers.git \
-            "$TEMP_DIR/superpowers"
-
-          echo "  → Syncing superpowers plugin (excluding .git / .github)..."
-          rm -rf plugins/superpowers
-          mkdir -p plugins/superpowers
-          rsync -a --exclude='.git' --exclude='.github' \
-            "$TEMP_DIR/superpowers/" plugins/superpowers/
-          echo "  ✓ superpowers synced"
-
-          # ── 3. alirezarezvani/claude-skills (finance) ──
-          echo ""
-          echo "[3/4] Cloning alirezarezvani/claude-skills (shallow)..."
-          git clone --depth 1 --quiet \
-            https://github.com/alirezarezvani/claude-skills.git \
-            "$TEMP_DIR/claude-skills"
-
-          copy_dir "$TEMP_DIR/claude-skills/finance" \
-                   "plugins/finance" \
-                   "finance (plugin)"
-
-          # ═══════════════════════════════════════════════════════════
-          # SKILLS — sync to plugins/essentials/skills/
-          # ═══════════════════════════════════════════════════════════
-          echo ""
-          echo "=== Syncing External Skills to essentials ==="
-
-          # ── 4. anthropics/skills (docx, pdf, pptx, xlsx) ──
-          echo ""
-          echo "[4/4] Cloning anthropics/skills (shallow)..."
-          git clone --depth 1 --quiet \
-            https://github.com/anthropics/skills.git \
-            "$TEMP_DIR/anthropics-skills"
-
-          mkdir -p plugins/essentials/skills
-
-          for skill in docx pdf pptx xlsx; do
-            copy_dir "$TEMP_DIR/anthropics-skills/skills/${skill}" \
-                     "plugins/essentials/skills/${skill}" \
-                     "${skill} (skill)"
-          done
-
-          echo ""
-          echo "=== Sync finished ==="
+        run: .github/scripts/sync-external.sh
 
       - name: Create Pull Request
-        uses: s@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1  # v8.1.1
         with:
           commit-message: |
             chore: sync external plugins and skills
 
-            Automated weekly sync from upstream sources:
-            - anthropics/claude-plugins-official (playwright, skill-creator)
-            - obra/superpowers
-            - alirezarezvani/claude-skills (finance)
-            - anthropics/skills (docx, pdf, pptx, xlsx)
+            Automated weekly sync from upstream sources.
+            See .github/scripts/sync-external.sh for details.
 
             Co-Authored-By: Claude <noreply@anthropic.com>
           title: "chore: sync external plugins and skills"
           body: |
             🤖 Automated sync from external upstream sources.
-
-            ### Sources synced
 
             | Source | Target |
             |--------|--------|
