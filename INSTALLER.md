@@ -18,7 +18,9 @@
 
 > **目标：** 下载 `set_env.py`，该脚本用于安全读写 `~/.claude/settings.json` 中的环境变量。
 
-### Step 0.1: 检测 Python 环境
+### Step 0.1: 检测运行环境
+
+#### Python
 
 运行以下命令确认 Python 可用：
 
@@ -26,8 +28,21 @@
 python --version
 ```
 
-- **成功：** 报告 Python 版本，进入 Step 0.2。
+- **成功：** 报告 Python 版本。
 - **失败：** 提示用户 "需要安装 Python 3.8+，请访问 https://www.python.org/downloads/ 下载安装。" 等待用户安装完成后重新检测。
+
+#### Node.js
+
+Playwright 插件依赖 Node.js 运行。检测 Node.js 是否可用：
+
+```bash
+node --version
+```
+
+- **成功：** 报告 Node.js 版本。
+- **失败：** 提示用户 "Playwright 插件需要 Node.js 18+，请访问 https://nodejs.org/ 下载安装 LTS 版本。" 等待用户安装完成后重新检测。
+
+> 两项检测均通过后进入 Step 0.2。
 
 ### Step 0.2: 下载 set_env.py
 
@@ -455,7 +470,45 @@ claude plugin list
 
 #### Step 4: 确认
 
-报告 "✅ qcc-due-diligence 插件已就绪"，等待用户确认后进入 Phase 4。
+报告 "✅ qcc-due-diligence 插件已就绪"，等待用户确认后进入 3.4。
+
+---
+
+### 3.4 安装 playwright 插件
+
+> **说明：** Playwright 提供浏览器自动化能力——网页截图、表单填写、元素点击、端到端测试等。通过 `npx` 运行，无需额外 API Key。
+
+#### Step 1: 检测是否已安装
+
+```bash
+claude plugin list
+```
+
+检查输出中是否包含 `playwright@liantian-cc-market`。
+
+- **已安装 →** 报告 "✅ playwright 已安装"，跳到 Step 4。
+- **未安装 →** 进入 Step 2。
+
+#### Step 2: 安装插件
+
+```bash
+claude plugin install --scope user playwright@liantian-cc-market
+```
+
+- **成功：** 报告 "✅ playwright 安装成功"。
+- **失败：** 报告错误信息，等待用户指示。
+
+#### Step 3: 验证
+
+```bash
+claude plugin list
+```
+
+确认 `playwright@liantian-cc-market` 出现在列表中且状态为 enabled。
+
+#### Step 4: 确认
+
+报告 "✅ playwright 插件已就绪"，等待用户确认后进入 Phase 4。
 
 ---
 
@@ -498,6 +551,7 @@ claude plugin list
 |------|------|------|
 | essentials | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
 | qcc-due-diligence | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
+| playwright | liantian-cc-market | ✅ 已安装 / ❌ 未安装 |
 
 ### 下一步
 
