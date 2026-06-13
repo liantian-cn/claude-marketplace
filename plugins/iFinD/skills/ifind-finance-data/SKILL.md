@@ -2,7 +2,7 @@
 name: "ifinD-finance-data"
 description: "同花顺金融数据查询，查询股票、基金、宏观经济、行业经济、新闻公告、债券、港美股及指数板块数据，同时支持智能选股、选基、宏观行业经济指标查询、金融公告资讯搜索等服务"
 homepage: https://www.51ifind.com
-version: 1.2.0
+version: 1.2.1
 author: iFinD
 ---
 
