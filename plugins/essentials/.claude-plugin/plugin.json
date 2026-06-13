@@ -1,7 +1,7 @@
 {
   "name": "essentials",
-  "version": "1.0.6",
-  "description": "liantian cc market 必备基础环境，包含五合一搜索引擎编排（WebSearch + Tavily + Bailian + Bocha + Baidu）。",
+  "version": "1.0.7",
+  "description": "liantian cc market 必备基础环境，包含六合一搜索引擎编排（WebSearch + Tavily + Bailian + Bocha + Baidu + WeChat）。",
   "author": {
     "name": "liantian"
   },
